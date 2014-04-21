@@ -3,12 +3,13 @@ package main
 import (
 	"crypto/rand"
 	"fmt"
+	"github.com/Pallinder/go-randomdata"
 	"math/big"
 	"strconv"
 	// "time"
 )
 
-func main() {
+func test1() {
 	// ra := math.rand.New(math.rand.NewSource(time.Now().UnixNano()))
 	// var a string
 	// for i := 0; i < 5; i++ {
@@ -21,7 +22,12 @@ func main() {
 		a = a + strconv.Itoa(int(value.Int64()))
 	}
 	fmt.Println(a)
+}
 
-	// a := [5]int{3, 1, 3, 6, 7}
-	// fmt.Println(a)
+func test2() {
+	fmt.Println(randomdata.Number(10000, 99999))
+}
+
+func main() {
+	test2()
 }
