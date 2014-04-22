@@ -24,6 +24,10 @@ func test2() {
 	fmt.Println(string(bytes))
 }
 
+func test3() {
+	var array [10]rune
+}
+
 func main() {
 	test2()
 }
