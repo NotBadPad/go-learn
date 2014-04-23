@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	pbytes := []byte("liyunde")
+	pbytes := []byte("12345")
 	bytes := make([]byte, len(pbytes))
 	for i, b := range pbytes {
 		bytes[i] = b ^ 3
