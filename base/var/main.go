@@ -25,9 +25,15 @@ func test2() {
 }
 
 func test3() {
-	var array [10]rune
+	var array [5]rune
+	array[0] ='a'
+	array[1] ='b'
+	array[2] ='c'
+	array[3] ='d'
+	array[4] ='e'
+	fmt.Println(string(array[0]))
 }
 
 func main() {
-	test2()
+	test3()
 }
