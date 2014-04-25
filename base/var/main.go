@@ -24,6 +24,19 @@ func test2() {
 	fmt.Println(string(bytes))
 }
 
+<<<<<<< HEAD
+=======
+func test3() {
+	var array [5]rune
+	array[0] ='a'
+	array[1] ='b'
+	array[2] ='c'
+	array[3] ='d'
+	array[4] ='e'
+	fmt.Println(string(array[0]))
+}
+
+>>>>>>> f3c396d4a8803b8c232acbec167063d611b571de
 func main() {
-	test2()
+	test3()
 }

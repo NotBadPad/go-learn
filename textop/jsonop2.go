@@ -17,6 +17,13 @@ type MsgHead struct {
 	Desc string `json:"msg,omitempty"`
 }
 
+type StationStatus struct {
+	printerStatus  int64 `json:"printerStatus"`  //打印机状态
+	cameraStatus   int64 `json:"cameraStatus"`   //摄像头状态
+	keyboardStatus int64 `json:"keyboardStatus"` //键盘状态
+	sweepgunStatus int64 `json:"sweepgunStatus"` //扫描头状态
+}
+
 func test1() {
 	msg := &Msg{}
 	str := `{"head":{"mid":"c12345678","type":"connect"},"body":{"vmCode":"00001","token":"KYMKYVOKAxLmIvelC7HqVRMKOeyYtikhcS6X7K8CX3M="}}`
@@ -67,6 +74,15 @@ func test2() {
 	}
 }
 
+func test3() {
+	stationStatus := &StationStatus{}
+	str := `{"printerStatus":2,"cameraStatus":2,"keyboardStatus":2,"sweepgunStatus":2}`
+	err := json.Unmarshal([]byte(str), stationStatus)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(stationStatus)
+}
 func main() {
-	test1()
+	test3()
 }
