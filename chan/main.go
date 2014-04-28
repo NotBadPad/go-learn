@@ -40,6 +40,7 @@ func test2(b chan bool) {
 
 func main() {
 	b := make(chan bool, 1)
+	close(b)
 	test2(b)
 	<-b
 }
