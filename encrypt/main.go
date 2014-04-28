@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
-func test1() {
-	pbytes := []byte("guojing")
+func test1(str string) {
+	pbytes := []byte(str)
 	bytes := make([]byte, len(pbytes))
 	for i, b := range pbytes {
 		bytes[i] = b ^ 3
@@ -21,5 +22,10 @@ func test2() {
 	fmt.Println(a[0] ^ a[1])
 }
 func main() {
-	test1()
+	if len(os.Args) < 2 {
+		fmt.Println("Error 参数为空")
+		return
+	}
+	encryptStr := os.Args[1]
+	test1(encryptStr)
 }
