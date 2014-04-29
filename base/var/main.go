@@ -44,6 +44,11 @@ func test5() {
 	fmt.Println(p)
 }
 
+func test6() {
+	a := "abcdefg"
+	fmt.Println(a[0:3])
+}
+
 func main() {
-	test5()
+	test6()
 }
