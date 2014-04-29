@@ -19,6 +19,11 @@ func test2() {
 	fmt.Println(st)
 }
 
+func test3(){
+	var a bool
+	
+}
+
 func main() {
 	test2()
 }

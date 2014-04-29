@@ -17,11 +17,11 @@ func (m *MyMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func sayhello(w http.ResponseWriter, r *http.Request) {
+func sayhello1(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello,MyMux")
 }
 
-func main() {
-	mux := &MyMux{}
-	http.ListenAndServe(":8899", mux)
-}
+// func main() {
+// 	mux := &MyMux{}
+// 	http.ListenAndServe(":8899", mux)
+// }

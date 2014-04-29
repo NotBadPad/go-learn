@@ -17,7 +17,7 @@ func sayhello(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", sayhello)
+	http.Handle("/", http.FileServer(http.Dir("./static")))
 	err := http.ListenAndServe(":8899", nil)
 	if err != nil {
 		log.Fatal("Start fail!")
