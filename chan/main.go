@@ -46,6 +46,18 @@ func test3(){
 	// b<-"testing2"
 	// fmt.Println("aaaa")
 }
+
+
+func test4(){
+	b := make(chan string,1)
+	b<-"testing1"
+	close(b)
+	fmt.Println(<-b)
+	b = make(chan string,1)
+	b<-"testing2"
+	fmt.Println(<-b)
+}
+
 func main() {
-	test3()
+	test4()
 }
