@@ -20,10 +20,21 @@ func test2() {
 }
 
 func test3(){
-	var a bool
-	
+	var a bool = false 
+	timer := time.NewTicker(time.Second*3)
+	for{
+		if a {
+			break
+		}
+		select{
+		case <-timer.C:
+			fmt.Println(time.Now())
+		}
+	}
 }
 
 func main() {
-	test2()
+	test3()
+	var a chan bool
+	<-a
 }
