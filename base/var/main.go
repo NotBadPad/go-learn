@@ -49,6 +49,44 @@ func test6() {
 	fmt.Println(a[0:3])
 }
 
+func test7() {
+	a := "## \r"
+	// b := []byte{13}
+	fmt.Println([]byte(a))
+}
+
+func test8() {
+	a := map[int32]int32{1: 1, 2: 2, 3: 3, 4: 4}
+	fmt.Println(len(a))
+	fmt.Println(a)
+}
+func test9() {
+	a := []int32{1, 2, 3, 4, 5, 6}
+	for i, b := range a {
+		fmt.Println(i, b)
+	}
+}
+
+func test10() {
+	a := map[int32]int32{1: 1, 2: 2, 3: 3, 4: 4}
+	for key, value := range a {
+		fmt.Println(key, value)
+		if key == 3 {
+			delete(a, key)
+		}
+	}
+
+	fmt.Println(a)
+}
+
+func test11() {
+	a := 10
+	for a > 0 {
+		a--
+		fmt.Println(a)
+	}
+}
+
 func main() {
-	test6()
+	test11()
 }
