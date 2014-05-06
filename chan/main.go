@@ -38,9 +38,35 @@ func test2(b chan bool) {
 	b <- true
 }
 
-func main() {
-	b := make(chan bool, 1)
+func test3(){
+	b := make(chan int)
+	// b<-"testing"
 	close(b)
-	test2(b)
-	<-b
+	fmt.Println(b)
+	// b<-"testing2"
+	// fmt.Println("aaaa")
+}
+
+func test4(){
+	b := make(chan string,1)
+	b<-"testing1"
+	close(b)
+	fmt.Println(<-b)
+	b = make(chan string,1)
+	b<-"testing2"
+	fmt.Println(<-b)
+}
+
+func test5(){
+	b := make(chan int)
+	b<-"testing"
+	close(b)
+	if c,ok := <-b;ok {
+		fmt.Println(b)
+	}
+}
+
+
+func main() {
+	test5()
 }
