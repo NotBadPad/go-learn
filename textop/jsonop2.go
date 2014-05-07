@@ -95,6 +95,17 @@ func test4() {
 	}
 	fmt.Println(msg.Head.Cts)
 }
+
+func test5() {
+	msg := &Msg{}
+	str := nil
+	err := json.Unmarshal([]byte(nil), msg)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(msg.Head.Cts)
+}
+
 func main() {
-	test1()
+	test5()
 }
