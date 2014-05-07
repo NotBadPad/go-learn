@@ -15,6 +15,7 @@ type MsgHead struct {
 	Type string `json:"type,omitempty"`
 	Code int    `json:"code,omitempty"`
 	Desc string `json:"msg,omitempty"`
+	Cts  int64  `json:"cts"`
 }
 
 type StationStatus struct {
@@ -26,7 +27,7 @@ type StationStatus struct {
 
 func test1() {
 	msg := &Msg{}
-	str := `{"head":{"mid":"c12345678","type":"connect"},"body":{"vmCode":"00001","token":"KYMKYVOKAxLmIvelC7HqVRMKOeyYtikhcS6X7K8CX3M="}}`
+	str := `{"head":{"mid":"c12345678","type":"connect"},"body":{"vmCode":"00001","token":"KYMKYVOKAxLmIvelC7HqVRMKOeyYtikhcS6X7K8CX3M=","cts":1341234223}}`
 	err := json.Unmarshal([]byte(str), msg)
 	if err != nil {
 		fmt.Println(err)
@@ -36,15 +37,16 @@ func test1() {
 	fmt.Println("body:", string(bytes))
 
 	type Parma struct {
-		VmCode string `json:"vmCode,omitempty"`
-		Token  string `json:"token,omitempty"`
+		VmCode string  `json:"vmCode,omitempty"`
+		Token  string  `json:"token,omitempty"`
+		Cts    float64 `json:"cts"`
 	}
 	parma := &Parma{}
 	err = json.Unmarshal(bytes, parma)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(parma.Token)
+	fmt.Println(int64(parma.Cts))
 }
 
 func test2() {
@@ -83,6 +85,16 @@ func test3() {
 	}
 	fmt.Println(stationStatus)
 }
+
+func test4() {
+	msg := &Msg{}
+	str := `{"head":{"mid":"c12345678","type":"boxStatus","cts":139943085681542411}}`
+	err := json.Unmarshal([]byte(str), msg)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(msg.Head.Cts)
+}
 func main() {
-	test3()
+	test1()
 }
