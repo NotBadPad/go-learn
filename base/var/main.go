@@ -4,6 +4,7 @@ import (
 	"crypto/rand"
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func test1() {
@@ -87,6 +88,13 @@ func test11() {
 	}
 }
 
+func test12() {
+	a := "abcdef"
+	fmt.Println(strings.Index(a, "c"))
+
+	fmt.Println(strings.Repeat(a, 10))
+}
+
 func main() {
-	test11()
+	test12()
 }
