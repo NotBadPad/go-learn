@@ -19,32 +19,30 @@ func test2() {
 	fmt.Println(st)
 }
 
-<<<<<<< HEAD
 func test3() {
 	var a bool
-
 }
 
-func unixTo() {
-
-=======
-func test3(){
-	var a bool = false 
-	timer := time.NewTicker(time.Second*3)
-	for{
+func test4() {
+	var a bool = false
+	timer := time.NewTicker(time.Second * 3)
+	for {
 		if a {
 			break
 		}
-		select{
+		select {
 		case <-timer.C:
 			fmt.Println(time.Now())
 		}
 	}
->>>>>>> f58f62a74a78e3a6a629c3e8743ca51d0b56ac22
+}
+
+func test5() {
+
 }
 
 func main() {
-	test3()
+	test4()
 	var a chan bool
 	<-a
 }
