@@ -1,6 +1,7 @@
 package main
 
 import (
+	"container/list"
 	"crypto/rand"
 	"fmt"
 	"strconv"
@@ -95,6 +96,83 @@ func test12() {
 	fmt.Println(strings.Repeat(a, 10))
 }
 
+func test13() {
+	a := make(map[int]int)
+	for i := 1; i < 10; i++ {
+		a[i] = i
+	}
+
+	for key, value := range a {
+		fmt.Println(key, value)
+	}
+}
+
+func test14() {
+	a := make([]int, 0)
+	a = append(a, 1)
+	a = append(a, 2)
+	a = append(a, 3)
+	a = append(a, 4)
+	a = append(a, 5)
+	a = append(a, 6)
+
+	// j := len(a)
+	// for i := 0; i < j; i++ {
+	// 	a = a[1:]
+	// 	fmt.Println(a)
+	// }
+
+	for _, value := range a {
+		fmt.Println(value)
+		a = a[1:]
+	}
+
+	fmt.Println(a)
+}
+
+type Order struct {
+	OrderId int64 //订单号
+}
+
+func test15() {
+	orderlist := list.New()
+	order1 := &Order{OrderId: 1}
+	order2 := &Order{OrderId: 2}
+	order3 := &Order{OrderId: 3}
+	order4 := &Order{OrderId: 4}
+	order5 := &Order{OrderId: 5}
+	orderlist.PushBack(*order1)
+	orderlist.PushBack(*order2)
+	orderlist.PushBack(*order3)
+	orderlist.PushBack(*order4)
+	orderlist.PushBack(*order5)
+	eachList(orderlist)
+
+	for elem := orderlist.Front(); elem != nil; {
+		fmt.Println("-------------------")
+		order := elem.Value.(Order)
+		if order.OrderId == 3 {
+			elem = deleteOrder(orderlist, elem)
+		} else {
+			elem = elem.Next()
+		}
+		eachList(orderlist)
+	}
+}
+
+func deleteOrder(orderList *list.List, elem *list.Element) (nextElem *list.Element) {
+	nextElem = elem.Next()
+	orderList.Remove(elem)
+	return
+}
+
+func eachList(orderList *list.List) {
+	for elem := orderList.Front(); elem != nil; elem = elem.Next() {
+		order := elem.Value.(Order)
+		fmt.Println(order.OrderId)
+	}
+}
+
 func main() {
-	test12()
+	test15()
 }
