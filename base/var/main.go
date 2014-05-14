@@ -195,12 +195,18 @@ type OrderList struct {
 	Orders map[int64][]*Order
 }
 
-func test18() {
-	a := &OrderList{
-		Orders make(map[int64][]*Order),
-	}
+type Test1 struct {
+	Name string
 }
 
+func test19() {
+	a := []string{"aaa", "bbb"}
+	test1 := &Test1{
+		Name: a[1],
+	}
+	a = nil
+	fmt.Println(test1.Name)
+}
 func main() {
-	test17()
+	test19()
 }
