@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -20,7 +21,7 @@ func test2() {
 }
 
 func test3() {
-	var a bool
+
 }
 
 func test4() {
@@ -38,11 +39,22 @@ func test4() {
 }
 
 func test5() {
+	str := "11/May/2014:00:00:05 +0800"
+	index := strings.Index(str, " ")
+	str = str[:index]
+	// strings.Split(str, sep)
+	fmt.Println(str)
 
+	// t1, _ := time.Parse("11/Jan/2006:15:04:05 -0700", str)
+	// fmt.Println(t1)
+}
+
+func test6() {
+	str := "12/May/2014:00:00:05 +0800"
+	t1, _ := time.Parse("2/Jan/2006:15:04:05 -0700", str)
+	fmt.Println(t1)
 }
 
 func main() {
-	test4()
-	var a chan bool
-	<-a
+	test6()
 }
