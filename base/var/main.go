@@ -173,6 +173,34 @@ func eachList(orderList *list.List) {
 	}
 }
 
+func test16() {
+	a := []string{"1", "2", "3"}
+	b := []string{"3", "4", "5"}
+	copy(a, b)
+	fmt.Println(a)
+}
+
+func test17() {
+	filePath := "/home/wwwlogs/productlogs/ubox002/service/exception.2014-05-11.log"
+	index := strings.LastIndex(filePath, "/")
+	if index > 1 {
+		prePath := filePath[:index-1]
+		index = strings.LastIndex(prePath, "/")
+		prePath = prePath[index+1:]
+		fmt.Println(prePath)
+	}
+}
+
+type OrderList struct {
+	Orders map[int64][]*Order
+}
+
+func test18() {
+	a := &OrderList{
+		Orders make(map[int64][]*Order),
+	}
+}
+
 func main() {
-	test15()
+	test17()
 }
