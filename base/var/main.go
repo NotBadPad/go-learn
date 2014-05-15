@@ -207,6 +207,23 @@ func test19() {
 	a = nil
 	fmt.Println(test1.Name)
 }
+
+type OrderList1 struct {
+	Orders map[string][3]float32
+}
+
+func test20() {
+	a := make(map[string][3]float32, 0)
+	v1 := [3]float32{0.05, 0.06, 13}
+	v2 := [3]float32{0.05, 0.06, 13}
+	v3 := [3]float32{0.05, 0.06, 13}
+	a["v1"] = v1
+	a["v2"] = v2
+	a["v3"] = v3
+
+	fmt.Println(a)
+}
+
 func main() {
-	test19()
+	test20()
 }
