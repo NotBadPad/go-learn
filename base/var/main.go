@@ -213,15 +213,17 @@ type OrderList1 struct {
 }
 
 func test20() {
-	a := make(map[string][3]float32, 0)
+	a := make(map[string]*[3]float32, 0)
 	v1 := [3]float32{0.05, 0.06, 13}
 	v2 := [3]float32{0.05, 0.06, 13}
 	v3 := [3]float32{0.05, 0.06, 13}
-	a["v1"] = v1
-	a["v2"] = v2
-	a["v3"] = v3
+	a["v1"] = &v1
+	a["v2"] = &v2
+	a["v3"] = &v3
 
-	fmt.Println(a)
+	p := a["v1"]
+	p[1] = 0.09
+	fmt.Println(a["v1"][1])
 }
 
 func main() {

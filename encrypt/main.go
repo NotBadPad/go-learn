@@ -1,8 +1,9 @@
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
-	"os"
+	// "os"
 )
 
 func test1(str string) {
@@ -21,11 +22,20 @@ func test2() {
 	a[0] = 2
 	fmt.Println(a[0] ^ a[1])
 }
+
+func test3() {
+	str := "awayyqwe123"
+	enStr := base64.StdEncoding.EncodeToString([]byte(str))
+	fmt.Println(enStr)
+	deStr, _ := base64.StdEncoding.DecodeString(enStr)
+	fmt.Println(string(deStr))
+}
+
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("Error 参数为空")
-		return
-	}
-	encryptStr := os.Args[1]
-	test1(encryptStr)
+	// if len(os.Args) < 2 {
+	// 	fmt.Println("Error 参数为空")
+	// 	return
+	// }
+	// encryptStr := os.Args[1]
+	test3()
 }
