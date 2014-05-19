@@ -226,6 +226,18 @@ func test20() {
 	fmt.Println(a["v1"][1])
 }
 
+func test21(a map[string]string) {
+	a["aaa"] = "bbbb"
+}
+
+func test22() {
+	a := make(map[string]string, 0)
+	a["aaa"] = "tttt"
+	fmt.Println(a)
+	test21(a)
+	fmt.Println(a)
+}
+
 func main() {
-	test20()
+	test22()
 }
