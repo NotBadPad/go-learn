@@ -19,7 +19,7 @@ func test1(str string) {
 
 func test2() {
 	var a [2]int
-	a[0] = 2
+	a[0] = 2c
 	fmt.Println(a[0] ^ a[1])
 }
 

@@ -60,6 +60,12 @@ func test7() {
 	fmt.Println(ti.Format("2006-01-02"))
 }
 
+func test8() {
+	t := time.Now()
+	t1 := time.Date(t.Year(), t.Month(), t.Day(), 24, 0, 0, 0, t.Location())
+	fmt.Println(t1.Unix() - t.Unix())
+}
+
 func main() {
-	test7()
+	test8()
 }
