@@ -1,12 +1,15 @@
 package main
 
-func main() {
-	"github.com/astaxie/beego"
+import (
+	"fmt"
+	"github.com/astaxie/beego/httplib"
+)
+
+func test2() {
+	req := httplib.Get("http://www.baidu.com/")
+	fmt.Println(req.ToJson(v))
 }
 
 func main() {
-	log := beego.logs.NewLogger(10000)
-	log.SetLogger("file", `{"filename":"buffetbox.log"}`)
-
-	beego.Info("aaaaaaaaaaaaa")
+	test2()
 }

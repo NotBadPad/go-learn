@@ -238,6 +238,14 @@ func test22() {
 	fmt.Println(a)
 }
 
+func test23() {
+	var a float32
+	a = 0.649
+	a = a * 1000
+	value := strconv.FormatFloat(float64(a), 'f', 0, 32)
+	fmt.Println(strconv.Atoi(value))
+}
+
 func main() {
-	test22()
+	test23()
 }
