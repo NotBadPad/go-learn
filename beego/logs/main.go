@@ -7,7 +7,7 @@ import (
 
 func test2() {
 	req := httplib.Get("http://www.baidu.com/")
-	fmt.Println(req.ToJson(v))
+	fmt.Println(req.Response().StatusCode)
 }
 
 func main() {
