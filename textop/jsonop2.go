@@ -106,6 +106,30 @@ func test5() {
 	fmt.Println(msg.Head.Cts)
 }
 
+func test6() {
+	msg := &Msg{}
+	str := `{"head":{"mid":"c12345678","type":"connect"},"body":{"vmCode":"00001","token":"KYMKYVOKAxLmIvelC7HqVRMKOeyYtikhcS6X7K8CX3M=","cts":1341234223}}`
+	err := json.Unmarshal([]byte(str), msg)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	bytes, _ := json.Marshal(msg.Body)
+	fmt.Println("body:", string(bytes))
+
+	type Parma struct {
+		VmCode string  `json:"vmCode,omitempty"`
+		Token  string  `json:"token,omitempty"`
+		Cts    float64 `json:"cts"`
+	}
+	parma := &Parma{}
+	err = json.Unmarshal(bytes, parma)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(int64(parma.Cts))
+}
+
 func main() {
-	test5()
+	test6()
 }
