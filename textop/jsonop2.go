@@ -107,6 +107,7 @@ func test5() {
 
 func test6() {
 	msg := &Msg{}
+<<<<<<< HEAD
 	str := `{"head":{"mid":"c12345678","type":"boxStatus"},"body":[{"boxSeq":5,"boxCode":"A5","deviceId":1,"status":1},{"boxSeq":6,"boxCode":"A6","deviceId":1,"status":1}]}`
 
 	type Parma struct {
@@ -124,6 +125,28 @@ func test6() {
 	}
 
 	fmt.Println(msg.Body.)
+=======
+	str := `{"head":{"mid":"c12345678","type":"connect"},"body":{"vmCode":"00001","token":"KYMKYVOKAxLmIvelC7HqVRMKOeyYtikhcS6X7K8CX3M=","cts":1341234223}}`
+	err := json.Unmarshal([]byte(str), msg)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	bytes, _ := json.Marshal(msg.Body)
+	fmt.Println("body:", string(bytes))
+
+	type Parma struct {
+		VmCode string  `json:"vmCode,omitempty"`
+		Token  string  `json:"token,omitempty"`
+		Cts    float64 `json:"cts"`
+	}
+	parma := &Parma{}
+	err = json.Unmarshal(bytes, parma)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(int64(parma.Cts))
+>>>>>>> a9bf68e7c4d49ae28bc3828b98d4cb36b0fb5a7d
 }
 
 func main() {
