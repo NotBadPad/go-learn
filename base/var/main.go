@@ -247,7 +247,7 @@ func test23() {
 }
 
 func test24() {
-	str := `',%s,%'`
+	str := `'%%,%s,%%'`
 	fmt.Println(fmt.Sprintf(str, "aaa"))
 }
 
