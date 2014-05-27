@@ -251,6 +251,11 @@ func test24() {
 	fmt.Println(fmt.Sprintf(str, "aaa"))
 }
 
+func test25() {
+	str := `%X`
+	fmt.Println(fmt.Sprintf(str, "aaa"))
+}
+
 func main() {
-	test24()
+	test25()
 }
