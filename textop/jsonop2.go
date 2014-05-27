@@ -98,7 +98,6 @@ func test4() {
 
 func test5() {
 	msg := &Msg{}
-	str := nil
 	err := json.Unmarshal([]byte(nil), msg)
 	if err != nil {
 		fmt.Println(err)
@@ -106,6 +105,27 @@ func test5() {
 	fmt.Println(msg.Head.Cts)
 }
 
+func test6() {
+	msg := &Msg{}
+	str := `{"head":{"mid":"c12345678","type":"boxStatus"},"body":[{"boxSeq":5,"boxCode":"A5","deviceId":1,"status":1},{"boxSeq":6,"boxCode":"A6","deviceId":1,"status":1}]}`
+
+	type Parma struct {
+		BoxSeq   int64  `json:"boxSeq,omitempty"`
+		BoxCode  string `json:"boxCode,omitempty"`
+		DeviceId int64  `json:"deviceId,omitempty"`
+		Status   int    `json:"status,omitempty"`
+	}
+
+	parmas := make([]*Parma, 0)
+	msg.Body = parmas
+	err := json.Unmarshal([]byte(str), msg)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(msg.Body.)
+}
+
 func main() {
-	test5()
+	test6()
 }

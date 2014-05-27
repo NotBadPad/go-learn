@@ -246,6 +246,11 @@ func test23() {
 	fmt.Println(strconv.Atoi(value))
 }
 
+func test24() {
+	str := `',%s,%'`
+	fmt.Println(fmt.Sprintf(str, "aaa"))
+}
+
 func main() {
-	test23()
+	test24()
 }
