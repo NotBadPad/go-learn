@@ -256,6 +256,15 @@ func test25() {
 	fmt.Println(fmt.Sprintf(str, "aaa"))
 }
 
+func test26(format string, v ...interface{}) string {
+	return fmt.Sprintf("[I] "+format, v...)
+
+}
+
+func test27() {
+	fmt.Println(test26("logger initialized.%v", "aaaa"))
+}
+
 func main() {
-	test25()
+	test27()
 }
