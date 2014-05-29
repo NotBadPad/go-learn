@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 var Heap []int
@@ -19,7 +21,6 @@ func right(i int) int {
 
 func swap(i, j int) {
 	Heap[i], Heap[j] = Heap[j], Heap[i]
-	fmt.Println(Heap)
 }
 
 func headify(i, size int) {
@@ -57,12 +58,37 @@ func build() {
 	}
 }
 
-func main() {
-	a := []int{14, 2, 55, 3, 63, 43, 5}
+func testHead() {
+	a := make([]int, 0)
+	for i := 0; i < 10000000; i++ {
+		a = append(a, rand.Intn(100000000))
+	}
+	b := a[:10]
+	fmt.Println(a)
+	begin := time.Now().UnixNano()
 	Heap = a
-	// fmt.Println(Heap)
 	build()
-	// fmt.Println(Heap)
+	for i := 10; i < 10000000; i++ {
+		setRoot(a[i])
+	}
 	sort()
-	// fmt.Println(Heap)
+	fmt.Println(b)
+	end := time.Now().UnixNano()
+	fmt.Println(end - begin)
+}
+
+func test() {
+	a := make([]int, 0)
+	for i := 0; i < 10000000; i++ {
+		a = append(a, rand.Intn(100000000))
+	}
+	b := a[:10]
+
+	for i := 10; i < 10000000; i++ {
+		setRoot(a[i])
+	}
+}
+
+func main() {
+	testHead()
 }
