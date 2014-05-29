@@ -265,6 +265,16 @@ func test27() {
 	fmt.Println(test26("logger initialized.%v", "aaaa"))
 }
 
+func test28(a []int) {
+	a[2] = 10
+}
+
+func test29() {
+	a := []int{1, 3, 4}
+	test28(a)
+	fmt.Println(a)
+}
+
 func main() {
-	test27()
+	test29()
 }
