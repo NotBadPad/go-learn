@@ -77,18 +77,69 @@ func testHead() {
 	fmt.Println(end - begin)
 }
 
+/**
+ * 测试堆，取最小的10个元素
+ */
 func test() {
 	a := make([]int, 0)
 	for i := 0; i < 10000000; i++ {
 		a = append(a, rand.Intn(100000000))
 	}
-	b := a[:10]
+	// b := a[:10]
 
 	for i := 10; i < 10000000; i++ {
 		setRoot(a[i])
 	}
 }
 
+/**
+ * 数组排序，冒泡
+ */
+func sortArray(a []int) {
+	for i := 0; i < len(a); i++ {
+		for j := i + 1; j < len(a); j++ {
+			if a[i] < a[j] {
+				a[i], a[j] = a[j], a[i]
+			}
+		}
+	}
+}
+
+/**
+ * 插入新元素
+ */
+func insertArray(a []int, v int) {
+	if a[0] < v {
+		return
+	}
+	i := 0
+	for {
+		if a[i] > v {
+			i++
+		} else {
+			break
+		}
+	}
+
+	//移动数组
+	temp := make([]int, len(a))
+	temp
+}
+
+/**
+ * 测试数组，取最小的10个元素
+ */
+func test2() {
+
+}
+
 func main() {
-	testHead()
+	// testHead()
+	a := make([]int, 0)
+	for i := 0; i < 30; i++ {
+		a = append(a, rand.Intn(100000000))
+	}
+	fmt.Println(a)
+	sortArray(a)
+	fmt.Println(a)
 }

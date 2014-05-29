@@ -25,6 +25,22 @@ func test2() {
 	fmt.Printf("%#s\n", a)
 }
 
+func test3() {
+	a := []int{1, 2, 3}
+	b := []int{7, 8, 9}
+	c := make([]int, len(a)+len(b))
+	copy(c, a)
+	copy(c[len(a):], b)
+	fmt.Println(c)
+}
+
+func test4() {
+	a := []int{1, 2, 3}
+	// b := []int{7, 8, 9}
+	c := append(a, 3, 4, 5)
+	fmt.Println(c)
+}
+
 func main() {
-	test2()
+	test4()
 }
