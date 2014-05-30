@@ -41,6 +41,11 @@ func test4() {
 	fmt.Println(c)
 }
 
+func test5() {
+	a := []int{1, 2, 3}
+	fmt.Println(a[1:2])
+}
+
 func main() {
-	test4()
+	test5()
 }

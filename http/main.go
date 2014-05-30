@@ -73,6 +73,13 @@ func test1() {
 	fmt.Println(result)
 }
 
+func test2() {
+	url := "http://m.5read.com/"
+	req := httplib.Get(url)
+	b, _ := req.Bytes()
+	fmt.Println(string(b))
+}
+
 func main() {
-	test1()
+	test2()
 }
