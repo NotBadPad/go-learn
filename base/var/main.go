@@ -275,6 +275,13 @@ func test29() {
 	fmt.Println(a)
 }
 
+func test30() {
+	url := "http://localhost:8081/test?token=gAGLi003OC3qKpRYCOq2clzYCuh5tt5hkXJppkwVZeE="
+	index := strings.Index(url, "token=")
+	index = index + 6
+	fmt.Println(url[:index])
+}
+
 func main() {
-	test29()
+	test30()
 }
