@@ -80,6 +80,15 @@ func test2() {
 	fmt.Println(string(b))
 }
 
+func test3() {
+	url := "http://localhost:8081/test"
+	req := httplib.Post(url)
+	req.Param("username","guojing")
+	req.Param("password","123456")
+	b, _ := req.Bytes()
+	fmt.Println(string(b))
+}
+
 func main() {
 	test2()
 }
