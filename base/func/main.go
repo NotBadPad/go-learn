@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func test1() {
@@ -46,6 +47,13 @@ func test5() {
 	fmt.Println(a[1:2])
 }
 
+func test6() {
+	str := "aaaa?stageId={stageId}&status={status}"
+	str = strings.Replace(str, "{stageId}", "11", 1)
+	str = strings.Replace(str, "{status}", "2", 1)
+	fmt.Println(str)
+}
+
 func main() {
-	test5()
+	test6()
 }
