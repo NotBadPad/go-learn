@@ -140,6 +140,6 @@ func testArray() {
 }
 
 func main() {
-	// testHead()
+	testHead()
 	testArray()
 }

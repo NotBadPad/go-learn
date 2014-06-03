@@ -54,6 +54,13 @@ func test6() {
 	fmt.Println(str)
 }
 
+func test7() {
+	str := "asdqwezxctyughjbmnvbn"
+	a := "c"
+	index := strings.Index(str, a)
+	fmt.Print(index)
+}
+
 func main() {
-	test6()
+	test7()
 }
