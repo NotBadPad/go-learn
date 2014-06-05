@@ -282,6 +282,17 @@ func test30() {
 	fmt.Println(url[:index])
 }
 
+func test31() {
+	a := make([]int, 3)
+	b := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Println(len(a), cap(a))
+	fmt.Printf("%p\n", &a)
+	a = append(a, b...)
+	fmt.Println(len(a), cap(a))
+	fmt.Printf("%p\n", &a)
+
+}
+
 func main() {
 	test30()
 }
