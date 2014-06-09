@@ -293,6 +293,15 @@ func test31() {
 
 }
 
+func test32(a []int) {
+	a[1] = 10
+}
+func test33() {
+	a := []int{1, 2, 3, 4, 5}
+	test32(a[:2])
+	fmt.Println(a)
+}
+
 func main() {
-	test30()
+	test33()
 }
