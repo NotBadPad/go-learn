@@ -311,6 +311,18 @@ func test34() {
 	fmt.Println(b)
 }
 
+func test35() {
+	a := []int{1, 2, 3, 4, 5}
+	fmt.Println(len(a[1:3]))
+}
+
+func test36() {
+	var a float64
+	a = 116.4807858
+	b := strconv.FormatFloat(a, 'f', 6, 64)
+	fmt.Println(b)
+}
+
 func main() {
-	test34()
+	test36()
 }
