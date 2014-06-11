@@ -302,6 +302,15 @@ func test33() {
 	fmt.Println(a)
 }
 
+func test34() {
+	a := "4.9E-324"
+	b, err := strconv.ParseFloat(a, 64)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println(b)
+}
+
 func main() {
-	test33()
+	test34()
 }
