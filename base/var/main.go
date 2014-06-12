@@ -4,6 +4,7 @@ import (
 	"container/list"
 	"crypto/rand"
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -323,6 +324,12 @@ func test36() {
 	fmt.Println(b)
 }
 
+func test37() {
+	a := []float64{116.480604, 116.481032, 116.480623, 116.480581, 116.481066, 116.481131, 116.480604}
+	sort.Float64s(a)
+	fmt.Println(a)
+}
+
 func main() {
-	test36()
+	test37()
 }

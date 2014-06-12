@@ -66,6 +66,16 @@ func test8() {
 	fmt.Println(t1.Unix() - t.Unix())
 }
 
+func test9() {
+	for i := 0; i < 10; i++ {
+		fmt.Println(time.Now().UnixNano())
+	}
+}
+func test10() {
+	str := "2014-06-12 16:32:00"
+	t1, _ := time.Parse("2006-01-02 15:04:05", str)
+	fmt.Println(t1)
+}
 func main() {
-	test8()
+	test10()
 }
