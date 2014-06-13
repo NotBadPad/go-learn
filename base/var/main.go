@@ -330,6 +330,13 @@ func test37() {
 	fmt.Println(a)
 }
 
+func test39() {
+	a := 10
+	for a > 0 {
+		fmt.Println(a)
+		a--
+	}
+}
 func main() {
-	test37()
+	test39()
 }
