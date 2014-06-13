@@ -13,6 +13,9 @@ type TaskTimer struct {
 	IsStop   bool      //结束标记
 }
 
+/**
+ * 创建TaskTimer
+ */
 func CreateTaskTimer(execTime string, interval int64, execFunc func()) *TaskTimer {
 	t := &TaskTimer{
 		Interval: interval,
@@ -23,6 +26,9 @@ func CreateTaskTimer(execTime string, interval int64, execFunc func()) *TaskTime
 	return t
 }
 
+/**
+ * 启动任务
+ */
 func (t *TaskTimer) Start() {
 	//计算首次执行时间
 	tnow := time.Now()
@@ -52,12 +58,18 @@ func (t *TaskTimer) Start() {
 	})
 
 	//阻塞
-	<-t.wait
+	// <-t.wait
 }
 
 func (t *TaskTimer) Stop() {
 	t.IsStop = true
-	t.wait <- false
+}
+
+/**
+ * 用来阻塞，在start之后调用，防止主线程结束
+ */
+func (t *TaskTimer) Wait() {
+	<-t.wait
 }
 
 func Test() {
@@ -65,6 +77,9 @@ func Test() {
 }
 
 func main() {
-	tt := CreateTaskTimer("2014-06-13 17:14:00", 7, Test)
+	tt := CreateTaskTimer("2014-06-13 17:14:00", 1, Test)
 	tt.Start()
+	time.Sleep(10 * time.Second)
+	tt.Stop()
+	time.Sleep(10 * time.Second)
 }
