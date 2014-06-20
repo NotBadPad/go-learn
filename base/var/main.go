@@ -337,6 +337,16 @@ func test39() {
 		a--
 	}
 }
+
+func test40() {
+	a := float64(5E-324)
+	fmt.Println(a == 4.9E-324)
+}
+func test41() {
+	a := []string{"a"}
+	fmt.Println(a, strings.Join(a, ","))
+}
+
 func main() {
-	test39()
+	test41()
 }
