@@ -347,6 +347,14 @@ func test41() {
 	fmt.Println(a, strings.Join(a, ","))
 }
 
+func test42() {
+	var a float64
+	a = 0.0209615616
+	val := strconv.FormatFloat(a, 'f', 4, 64)
+	a, _ = strconv.ParseFloat(val, 64)
+	fmt.Println(a)
+}
+
 func main() {
-	test41()
+	test42()
 }

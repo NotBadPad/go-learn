@@ -136,6 +136,18 @@ func test7() {
 	fmt.Println(string(bytes))
 }
 
+func test8() {
+	a := make([]interface{}, 2)
+	b := map[string]interface{}{"aaa": "aaa", "bbb": 12}
+	a[0] = b
+	a[1] = b
+	bytes, err := json.Marshal(a)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println(string(bytes))
+}
+
 func main() {
-	test7()
+	test8()
 }
