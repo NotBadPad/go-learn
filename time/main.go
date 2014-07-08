@@ -76,6 +76,12 @@ func test10() {
 	t1, _ := time.Parse("2006-01-02 15:04:05", str)
 	fmt.Println(t1)
 }
+
+func test11() {
+	t := time.Now()
+	t = t.AddDate(0, -1, -1)
+	fmt.Println(t.String())
+}
 func main() {
-	test10()
+	test11()
 }
