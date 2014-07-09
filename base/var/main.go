@@ -355,6 +355,18 @@ func test42() {
 	fmt.Println(a)
 }
 
+func test43() {
+	a := map[string]string{"aa": "ddd", "bb": "ccc"}
+	b := a["rr"]
+	fmt.Println(b == "")
+}
+
+func test44() {
+	a := "1,2"
+	b := strings.Split(a, ",")
+	fmt.Println(b)
+}
+
 func main() {
-	test42()
+	test44()
 }
