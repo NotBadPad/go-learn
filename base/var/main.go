@@ -367,6 +367,23 @@ func test44() {
 	fmt.Println(b)
 }
 
+func test45() {
+	a := 200
+	b := float64(a) / 100
+	c := strconv.FormatFloat(b, 'f', 2, 64)
+	fmt.Println(c)
+}
+
+func test45() {
+	a := make([][]string, 0)
+	b := []string{"a", "b", "c", "d"}
+	c := []string{"a", "b", "c", "d"}
+	d := []string{"a", "b", "c", "d"}
+	a = append(a, b)
+	a = append(a, b)
+	a = append(a, b)
+}
+
 func main() {
-	test44()
+	test45()
 }
