@@ -1,40 +1,56 @@
 package main
 
 import (
-	"code.google.com/p/go.text/encoding"
-	"code.google.com/p/go.text/encoding/charmap"
-	"code.google.com/p/go.text/transform"
-	"encoding/csv"
-	"os"
+	"bytes"
+	"errors"
+	iconv "github.com/djimenez/iconv-go"
 )
 
-func test1() {
-	f, _ := os.Create("test1.xls")
-	defer f.Close()
+/**
+ * 导出处理
+ */
 
-	f.WriteString("\xEF\xBB\xBF")
+const (
+	OUT_ENCODING = "gbk" //输出编码
+)
 
-	w := csv.NewWriter(f)
-	w.Write([]string{"姓名", "年龄"})
-	w.Write([]string{"aaa", "12"})
-	w.Write([]string{"bbb", "13"})
-	w.Write([]string{"ccc", "14"})
-	w.Flush()
-}
+/**
+ * 导出csv格式文件，输出byte数组
+ * 输出编码通过OUT_ENCODING指定
+ */
+func ExportCsv(head []string, data [][]string) (out []byte, err error) {
+	if len(head) == 0 {
+		err = errors.New("ExportCsv Head is nil")
+		return
+	}
 
-func test2() {
-	f, _ := os.Create("test1.xls")
-	defer f.Close()
+	columnCount := len(head)
+	dataStr := bytes.NewBufferString("")
+	//添加头
+	for index, headElem := range head {
+		separate := ","
+		if index == columnCount-1 {
+			separate = "\n"
+		}
+		dataStr.WriteString(headElem + separate)
+	}
 
-	f.WriteString("姓名,年龄,植物\n\r")
-	f.WriteString("a,b,c\n\r")
-	f.WriteString("a,b,c\n\r")
-}
+	//添加数据行
+	for _, dataArray := range data {
+		if len(dataArray) != columnCount { //数据项数小于列数
+			err = errors.New("ExportCsv data format is error.")
+		}
+		for index, dataElem := range dataArray {
+			separate := ","
+			if index == columnCount-1 {
+				separate = "\n"
+			}
+			dataStr.WriteString(dataElem + separate)
+		}
+	}
 
-func test3() {
-
-}
-
-func main() {
-	test2()
+	//处理编码
+	out = make([]byte, len(dataStr.Bytes()))
+	iconv.Convert(dataStr.Bytes(), out, "utf-8", OUT_ENCODING)
+	return
 }
