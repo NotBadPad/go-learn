@@ -102,5 +102,5 @@ func test5() {
 }
 func main() {
 	// fmt.Println(IsIP("127.a.0.1"))
-	test5()
+	test3()
 }

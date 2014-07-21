@@ -19,7 +19,7 @@ type server struct {
 	ServerIp   string `xml:"serverIP"`
 }
 
-func main() {
+func test1() {
 	/******* 写文件 ******/
 	// v := &Servers{Version: "1"}
 	// v.Svs = append(v.Svs, server{"ShangHai", "127.0.0.1"})
@@ -62,4 +62,33 @@ func main() {
 	}
 
 	fmt.Println(v)
+}
+
+func test2() {
+	data := `<serviceResponse>
+			    <authenticationSuccess>
+			    <user>username</user>
+			     <proxyGrantingTicket>PGTIOU-84678-8a9d...</proxyGrantingTicket>
+			    </authenticationSuccess>
+			</serviceResponse>`
+	type AuthenticationSuccess struct {
+		User string `xml:"user"`
+	}
+	type Resp struct {
+		XMLName xml.Name              `xml:"serviceResponse"`
+		Auth    AuthenticationSuccess `xml:"authenticationSuccess"`
+	}
+
+	value := &Resp{}
+	err := xml.Unmarshal([]byte(data), &value)
+	if err != nil {
+		fmt.Println("Server.xml read fail:", err)
+		return
+	}
+
+	fmt.Println(value)
+}
+
+func main() {
+	test2()
 }
