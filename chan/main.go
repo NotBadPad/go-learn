@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -38,7 +39,7 @@ func test2(b chan bool) {
 	b <- true
 }
 
-func test3(){
+func test3() {
 	b := make(chan int)
 	// b<-"testing"
 	close(b)
@@ -47,26 +48,37 @@ func test3(){
 	// fmt.Println("aaaa")
 }
 
-func test4(){
-	b := make(chan string,1)
-	b<-"testing1"
+func test4() {
+	b := make(chan string, 1)
+	b <- "testing1"
 	close(b)
 	fmt.Println(<-b)
-	b = make(chan string,1)
-	b<-"testing2"
+	b = make(chan string, 1)
+	b <- "testing2"
 	fmt.Println(<-b)
 }
 
-func test5(){
-	b := make(chan int)
-	b<-"testing"
-	close(b)
-	if c,ok := <-b;ok {
-		fmt.Println(b)
-	}
-}
+// func test5() {
+// 	b := make(chan int)
+// 	b <- "testing"
+// 	close(b)
+// 	if c, ok := <-b; ok {
+// 		fmt.Println(b)
+// 	}
+// }
 
+func test6() {
+	runtime.GOMAXPROCS(4)
+	ch := make(chan int, 3)
+	go func() {
+		fmt.Print("3")
+		time.Sleep(20 * time.Second)
+	}()
+	fmt.Print("1")
+	<-ch
+	fmt.Print("2")
+}
 
 func main() {
-	test5()
+	test6()
 }
