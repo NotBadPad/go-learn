@@ -20,6 +20,7 @@ type server struct {
 }
 
 func test1() {
+<<<<<<< HEAD
 	/******* 写文件 ******/
 	// v := &Servers{Version: "1"}
 	// v.Svs = append(v.Svs, server{"ShangHai", "127.0.0.1"})
@@ -39,6 +40,8 @@ func test1() {
 	// fout.Write([]byte(xml.Header))
 	// fout.Write(output)
 
+=======
+>>>>>>> 3a4d65ada1be726a4fc6f76d2dac5aaf2e304328
 	/******* 读文件 ******/
 
 	fin, err := os.Open("Server.xml")
@@ -65,6 +68,7 @@ func test1() {
 }
 
 func test2() {
+<<<<<<< HEAD
 	data := `<serviceResponse>
 			    <authenticationSuccess>
 			    <user>username</user>
@@ -91,4 +95,29 @@ func test2() {
 
 func main() {
 	test2()
+=======
+	/******* 写文件 ******/
+	// v := &Servers{Version: "1"}
+	// v.Svs = append(v.Svs, server{"ShangHai", "127.0.0.1"})
+	// v.Svs = append(v.Svs, server{"BieJing", "127.0.0.2"})
+	// output, err := xml.MarshalIndent(v, "\t", "\t")
+	// if err != nil {
+	// 	fmt.Printf("error:%v", err)
+	// }
+
+	// fout, err := os.Create("Server.xml")
+	// defer fout.Close()
+	// if err != nil {
+	// 	fmt.Println("Server.xml create fail:", err)
+	// 	return
+	// }
+
+	// fout.Write([]byte(xml.Header))
+	// fout.Write(output)
+
+}
+
+func main() {
+	test1()
+>>>>>>> 3a4d65ada1be726a4fc6f76d2dac5aaf2e304328
 }
