@@ -12,5 +12,5 @@ go语言学习，主要是个人联系杂乱的例子
 	<li>web：http处理</li>
 	<li>textop：文本处理（xml、json、regex、template）</li>
 	<li>socket：socket</li>
-	<li></li>
+	<li>export:导出处理，目前仅实现csv格式导出</li>
 </ul>
