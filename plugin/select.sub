@@ -1,0 +1,21 @@
+import sublime, sublime_plugin
+
+class TestShowCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		braces = False
+		sels = self.view.sel()
+		for sel in sels:
+			# sublime.message_dialog(self.view.substr(sel))
+			selstr = self.view.substr(sel)
+			if selstr.find("{")!=-1:
+				braces=True
+		if not braces:
+		    new_sels = []
+		    for sel in sels:
+		    	sublime.message_dialog(str(sel.end()))
+		        new_sels.append(self.view.find('\{', sel.end()))
+		    sels.clear()
+		    for sel in new_sels:
+		        sels.add(sel)
+		    self.view.run_command("expand_selection", {"to": "brackets"})
+
