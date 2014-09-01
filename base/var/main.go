@@ -374,7 +374,7 @@ func test45() {
 	fmt.Println(c)
 }
 
-func test45() {
+func test47() {
 	a := make([][]string, 0)
 	b := []string{"a", "b", "c", "d"}
 	c := []string{"a", "b", "c", "d"}
@@ -384,6 +384,15 @@ func test45() {
 	a = append(a, b)
 }
 
+func test46() {
+	a := []byte{0, 0, 0}
+	m := make(map[[]byte]string, 0)
+
+	m[a] = "aaa"
+
+	fmt.Println(m[a])
+}
+
 func main() {
-	test45()
+	test46()
 }
