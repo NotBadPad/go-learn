@@ -148,6 +148,58 @@ func test8() {
 	fmt.Println(string(bytes))
 }
 
+func test9() {
+	type Parma struct {
+		VmCode string `json:"vmCode"`
+		Sn     int64  `json:"sn"`
+		CTime  string `json:"ctime"`
+	}
+
+	parmas := make([]*Parma, 0)
+	parma := &Parma{
+		VmCode: "0001407",
+		Sn:     1,
+		CTime:  "2014-09-10 11:25:30",
+	}
+	parmas = append(parmas, parma)
+	parma = &Parma{
+		VmCode: "0001407",
+		Sn:     1,
+		CTime:  "2014-09-10 11:25:30",
+	}
+	parmas = append(parmas, parma)
+	bytes, err := json.Marshal(parmas)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+	fmt.Println(string(bytes))
+
+}
+
+func test10() {
+	type ProSellNum struct {
+		ProId int64 `json:"proId"`
+		Num   int64 `json:num`
+	}
+
+	type SellResult struct {
+		VmCode  string        `json:"vmCode"`
+		Sn      int64         `json:"sn"`
+		SellNum []*ProSellNum `json:"sellNum"`
+	}
+
+	jsonStr := `[{"vmCode": "0001407", "sn": 2, "sellNum": [{"proId": 54, "num": 100}, {"proId": 12, "num": 100}, {"proId": 33, "num": 100}]},{"vmCode": "0001407", "sn": 2, "sellNum": [{"proId": 54, "num": 100}, {"proId": 12, "num": 100}, {"proId": 33, "num": 100}]},{"vmCode": "0001407", "sn": 2, "sellNum": [{"proId": 54, "num": 100}, {"proId": 12, "num": 100}, {"proId": 33, "num": 100}]}]`
+
+	var srs []*SellResult
+	err := json.Unmarshal([]byte(jsonStr), &srs)
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		fmt.Printf(srs[0].VmCode)
+	}
+
+}
+
 func main() {
-	test8()
+	test10()
 }
