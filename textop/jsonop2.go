@@ -200,6 +200,20 @@ func test10() {
 
 }
 
+/**
+ * 出货量接口数据
+ */
+type ProSellNum struct {
+	ProId int64 `json:"proId"`
+	Num   int64 `json:"num"`
+}
+
+type SellResult struct {
+	VmCode  string        `json:"vmCode"`
+	Sn      int64         `json:"sn"`
+	SellNum []*ProSellNum `json:"sellNum"`
+}
+
 func main() {
 	test10()
 }
