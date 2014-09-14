@@ -82,6 +82,13 @@ func test11() {
 	t = t.AddDate(0, -1, -1)
 	fmt.Println(t.String())
 }
+
+func test12() {
+	str := "2014-06-12 16:32:00"
+	t1, _ := time.Parse("2006-01-02 15:04:05", str)
+	fmt.Println(t1)
+}
+
 func main() {
 	test11()
 }
