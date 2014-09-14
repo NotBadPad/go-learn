@@ -84,11 +84,18 @@ func test11() {
 }
 
 func test12() {
+	nowDate, _ := time.Parse("2006-01-02", time.Now().Format("2006-01-02"))
+	begin := nowDate.AddDate(0, 0, -1).Format("2006-01-02 15:04:05")
+	end := nowDate.Format("2006-01-02 15:04:05")
+	fmt.Println(nowDate.String(), begin, end)
+}
+
+func test13() {
 	str := "2014-06-12 16:32:00"
-	t1, _ := time.Parse("2006-01-02 15:04:05", str)
+	t1, _ := time.Parse("20060102150405", str)
 	fmt.Println(t1)
 }
 
 func main() {
-	test11()
+	test12()
 }
