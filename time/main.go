@@ -113,6 +113,9 @@ func task2() {
 			fmt.Println("bbbb")
 		}
 	}
+	str := "2014-06-12 16:32:00"
+	t1, _ := time.Parse("20060102150405", str)
+	fmt.Println(t1)
 }
 
 func main() {
