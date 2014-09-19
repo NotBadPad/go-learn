@@ -90,6 +90,32 @@ func test12() {
 	fmt.Println(nowDate.String(), begin, end)
 }
 
+func test13() {
+	str, _ := time.Parse("20060102150405", "20080102150405")
+	fmt.Println(str)
+}
+
+func task1() {
+	timer := time.NewTicker(1 * time.Second)
+	for {
+		select {
+		case <-timer.C:
+			fmt.Println("aaaa")
+		}
+	}
+}
+
+func task2() {
+	timer := time.NewTicker(1 * time.Second)
+	for {
+		select {
+		case <-timer.C:
+			fmt.Println("bbbb")
+		}
+	}
+}
+
 func main() {
-	test12()
+	go task1()
+	test2()
 }
