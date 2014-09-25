@@ -393,6 +393,17 @@ func test46() {
 	fmt.Println(m[a])
 }
 
+func test47() {
+	a := make([]int, 0)
+	a = append(a, 1)
+	a = append(a, 2)
+	fmt.Println(m[a])
+}
+
+func test48() {
+	fmt.Println(strings.Replace("temp/1231231231.zip", "temp/", new, n))
+}
+
 func main() {
 	test46()
 }
