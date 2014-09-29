@@ -41,7 +41,10 @@ func copyContents(r io.Reader, w io.Writer) error {
 	return nil
 }
 
-func main() {
+/**
+ * 写
+ */
+func test1() {
 	target := "temp/test.zip"
 	sources := make([]string, 2)
 	sources[0] = "temp/a.csv"
@@ -62,5 +65,34 @@ func main() {
 		rf.Close()
 		os.Remove(source)
 	}
+}
 
+/**
+ * 添加
+ */
+func test2() {
+	target := "temp/test.zip"
+	sources := make([]string, 2)
+	sources[0] = "temp/a.log"
+	sources[0] = "temp/b.log"
+
+	fw, _ := os.Create(target)
+	defer fw.Close()
+
+	wt := zip.NewWriter(fw)
+	defer wt.Close()
+
+	for _, source := range sources {
+		index := strings.LastIndex(source, "/")
+		fileName := source[index+1:]
+		w, _ := wt.Create(fileName)
+		rf, _ := os.Open(source)
+		copyContents(rf, w)
+		rf.Close()
+		// os.Remove(source)
+	}
+}
+
+func main() {
+	test2()
 }

@@ -377,33 +377,79 @@ func test45() {
 func test47() {
 	a := make([][]string, 0)
 	b := []string{"a", "b", "c", "d"}
-	c := []string{"a", "b", "c", "d"}
-	d := []string{"a", "b", "c", "d"}
+	// c := []string{"a", "b", "c", "d"}
+	// d := []string{"a", "b", "c", "d"}
 	a = append(a, b)
 	a = append(a, b)
 	a = append(a, b)
 }
 
 func test46() {
-	a := []byte{0, 0, 0}
-	m := make(map[[]byte]string, 0)
+	// a := []byte{0, 0, 0}
+	// m := make(map[[]byte]string, 0)
 
-	m[a] = "aaa"
+	// m[a] = "aaa"
 
-	fmt.Println(m[a])
+	// fmt.Println(m[a])
 }
 
-func test47() {
-	a := make([]int, 0)
-	a = append(a, 1)
-	a = append(a, 2)
-	fmt.Println(m[a])
+func test50() {
+	// a := make([]int, 0)
+	// a = append(a, 1)
+	// a = append(a, 2)
+	// fmt.Println(a)
 }
 
 func test48() {
-	fmt.Println(strings.Replace("temp/1231231231.zip", "temp/", new, n))
+	// fmt.Println(strings.Replace("temp/1231231231.zip", "temp/", new, n))
+}
+
+func test49() {
+	a := []string{"a", "b", "c"}
+	b := []string{"d", "e"}
+	a = append(a, b...)
+	fmt.Println(a)
+}
+
+type TElem struct {
+	name string
+	id   int64
+}
+
+func test51() {
+	t1 := &TElem{"gj", 0}
+	t2 := &TElem{"gj1", 1}
+
+	a := make([]*TElem, 2)
+	a[0] = t1
+	a[1] = t2
+
+	t3 := &TElem{"gj2", 2}
+	a = append(a, t3)
+	a[2].name = "gj3"
+	fmt.Println(t3.name)
+}
+
+func test52() {
+	t1 := &TElem{"gj", 0}
+	t2 := &TElem{"gj1", 1}
+
+	a := make([]*TElem, 2)
+	a[0] = t1
+	a[1] = t2
+
+	t3 := &TElem{"gj2", 2}
+	b := make([]*TElem, 1)
+	b[0] = t3
+
+	temp := make([]*TElem, 3)
+	copy(temp, a)
+	copy(temp[len(a):], b)
+
+	temp[2].name = "gj3"
+	fmt.Println(b[0].name)
 }
 
 func main() {
-	test46()
+	test52()
 }
