@@ -450,6 +450,11 @@ func test52() {
 	fmt.Println(b[0].name)
 }
 
+func test53() {
+	a := ",guoj,"
+	fmt.Println(a[1 : len(a)-1])
+}
+
 func main() {
-	test52()
+	test53()
 }
