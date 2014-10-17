@@ -455,6 +455,22 @@ func test53() {
 	fmt.Println(a[1 : len(a)-1])
 }
 
+func test54() {
+	type T struct {
+		Name string
+		Age  int64
+	}
+
+	t1 := &T{Name: "gj", Age: 12}
+
+	t2 := new(T)
+	t2.Name = "gj2"
+	t2.Age = 13
+
+	t3 := T{Name: "gj3", Age: 14}
+	fmt.Println(&t1, t2.Name, &t3)
+}
+
 func main() {
-	test53()
+	test54()
 }
