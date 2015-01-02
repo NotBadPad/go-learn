@@ -91,11 +91,54 @@ func test12() {
 }
 
 func test13() {
+	str, _ := time.Parse("20060102150405", "20080102150405")
+	fmt.Println(str)
+}
+
+func task1() {
+	timer := time.NewTicker(1 * time.Second)
+	for {
+		select {
+		case <-timer.C:
+			fmt.Println("aaaa")
+		}
+	}
+}
+
+func task2() {
+	timer := time.NewTicker(1 * time.Second)
+	for {
+		select {
+		case <-timer.C:
+			fmt.Println("bbbb")
+		}
+	}
 	str := "2014-06-12 16:32:00"
 	t1, _ := time.Parse("20060102150405", str)
 	fmt.Println(t1)
 }
 
+func test14() {
+	t := time.Unix(1414570076, 0)
+	ts := t.Format("2006-01-02 15:04:05")
+	fmt.Println(ts)
+}
+
+func test15() {
+	from := "2014-11-12"
+	to := "2014-11-15"
+
+	t, _ := time.Parse("2006-01-02", from)
+	tto, _ := time.Parse("2006-01-02", to)
+
+	for t.Before(tto) {
+		fmt.Println(t.Format("2006-01-02"))
+		t = t.AddDate(0, 0, 1)
+	}
+
+	fmt.Println(tto.Format("2006-01-02"))
+}
+
 func main() {
-	test12()
+	test15()
 }

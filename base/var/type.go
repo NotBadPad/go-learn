@@ -13,6 +13,11 @@ func test1() {
 	fmt.Println(128 & (1 << uint(10)))
 }
 
+func test2() {
+	datas := make([]map[string]interface{}, 10)
+	fmt.Println(datas)
+}
+
 func main() {
-	test1()
+	test2()
 }
