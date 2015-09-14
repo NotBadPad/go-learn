@@ -37,16 +37,15 @@ func test1() {
 	fmt.Println("body:", string(bytes))
 
 	type Parma struct {
-		VmCode string  `json:"vmCode,omitempty"`
-		Token  string  `json:"token,omitempty"`
-		Cts    float64 `json:"cts"`
+		VmCode string `json:"vmCode,omitempty"`
+		Token  string `json:"token,omitempty"`
 	}
 	parma := &Parma{}
 	err = json.Unmarshal(bytes, parma)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(int64(parma.Cts))
+	fmt.Println(parma)
 }
 
 func test2() {
@@ -215,5 +214,5 @@ type SellResult struct {
 }
 
 func main() {
-	test10()
+	test1()
 }
