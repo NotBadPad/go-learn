@@ -448,6 +448,12 @@ func test52() {
 
 	temp[2].name = "gj3"
 	fmt.Println(b[0].name)
+<<<<<<< HEAD
+}
+
+func main() {
+	test52()
+=======
 }
 
 func test53() {
@@ -473,4 +479,5 @@ func test54() {
 
 func main() {
 	test54()
+>>>>>>> c6254d3cc19aeaedeac31f84f04c473c4ff6d83b
 }
