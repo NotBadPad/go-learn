@@ -6,19 +6,17 @@ package main
 import (
 	"fmt"
 	zk "github.com/samuel/go-zookeeper/zk"
+	"time"
 )
 
 func test1() {
-	conn, session, err := zk.Connect([]string{"localhost:2181"}, 50000)
+	conn, _, err := zk.Connect([]string{"localhost:2183"}, 50*time.Second)
 	if err != nil {
 		fmt.Println(err)
 	}
 
 	defer conn.Close()
-	event := <-session
-	if event.State == zk.StateConnected {
-		conn.Create("/testadaw", []byte{1, 2, 3, 4}, 0, zk.WorldACL(zk.PermAll))
-	}
+	conn.Create("/testadaw", nil, zk.FlagSequence, zk.WorldACL(zk.PermAll))
 }
 
 func main() {
