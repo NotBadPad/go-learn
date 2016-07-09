@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func getConnect(string []zkList) (conn zk.Conn) {
+func getConnect(zkList []string) (conn *zk.Conn) {
 	conn, _, err := zk.Connect(zkList, 10*time.Second)
 	if err != nil {
 		fmt.Println(err)
@@ -26,7 +26,9 @@ func test1() {
 	conn := getConnect(zkList)
 
 	defer conn.Close()
-	conn.Create("/testadaw", nil, zk.FlagSequence, zk.WorldACL(zk.PermAll))
+	conn.Create("/go_servers", nil, 0, zk.WorldACL(zk.PermAll))
+
+	time.Sleep(20 * time.Second)
 }
 
 /**
@@ -34,9 +36,32 @@ func test1() {
  * @return {[type]}
  */
 func test2() {
+	zkList := []string{"localhost:2183"}
+	conn := getConnect(zkList)
+
+	defer conn.Close()
+	conn.Create("/testadaadsasdsaw", nil, zk.FlagEphemeral, zk.WorldACL(zk.PermAll))
+
+	time.Sleep(20 * time.Second)
+}
+
+/**
+ * 获取所有节点
+ */
+func test3() {
+	zkList := []string{"localhost:2183"}
+	conn := getConnect(zkList)
+
+	defer conn.Close()
+
+	children, _, err := conn.Children("/go_servers")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Printf("%v \n", children)
 
 }
 
 func main() {
-	test1()
+	test3()
 }

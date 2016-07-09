@@ -22,7 +22,6 @@ func main() {
 		}
 	}()
 
-	fmt.Println("aaaa")
 	db, err := OpenMysql()
 	if err != nil {
 		fmt.Println("aaaa" + err.Error())
@@ -32,14 +31,12 @@ func main() {
 
 	sql_ := `SELECT COUNT(0) FROM ub_alipaycs_cancel`
 	stmt, err := db.Prepare(sql_)
-	fmt.Println("bbbb")
 	if err != nil {
 		fmt.Printf("Error exec sql: %s\n", err.Error())
 		return
 	}
 	defer stmt.Close()
 
-	fmt.Println("ccccc")
 	if err = stmt.QueryRow().Scan(&count); err != nil {
 		fmt.Printf("Error exec sql: %s\n", err.Error())
 	}
